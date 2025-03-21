@@ -1,0 +1,85 @@
+table PETAL_MODEL
+	lineageTag: eba32cc7-87a7-4b14-baeb-e51c284e6227
+
+	measure 'Avg Petal Length' = ```
+			AVERAGE(PETAL_MODEL[petal_length])
+			
+			
+			```
+		lineageTag: 28e728a9-e3b9-4f92-bbf1-4a9d1c481fcd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Petal Length' = ```
+			MAX(PETAL_MODEL[petal_length])
+			
+			
+			```
+		lineageTag: deb3252e-9770-4d24-9849-dcae6ce2649a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Min Petal Length' = ```
+			MIN(PETAL_MODEL[petal_length])
+			
+			```
+		lineageTag: a9256617-477f-4525-b9c0-8ad4f0832e67
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg sepal Length' = AVERAGE(PETAL_MODEL[SEPAL_LENGTH])
+		lineageTag: 642e7aee-5f7b-4fbf-b9a3-f2481afd58bb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PETAL_LENGTH
+		dataType: double
+		lineageTag: 01f24d91-2295-473f-b003-235c704b8f76
+		summarizeBy: sum
+		sourceColumn: PETAL_LENGTH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SEPAL_LENGTH
+		dataType: double
+		lineageTag: 2cc3f4f3-0183-45b4-b59e-bd1933b8499f
+		summarizeBy: sum
+		sourceColumn: SEPAL_LENGTH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SEPAL_WIDTH
+		dataType: double
+		lineageTag: 45e2c1b7-b1c4-4756-ba54-0b427e1f8c7f
+		summarizeBy: sum
+		sourceColumn: SEPAL_WIDTH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SPECIES
+		dataType: string
+		lineageTag: 1efa88a7-2891-41de-a443-e2823072aaba
+		summarizeBy: none
+		sourceColumn: SPECIES
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PETAL_MODEL = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("IEHIPSW-KOA05469.snowflakecomputing.com","compute_wh"),
+				    MANAGE_DB_Database = Source{[Name="MANAGE_DB",Kind="Database"]}[Data],
+				    PUBLIC_Schema = MANAGE_DB_Database{[Name="PUBLIC",Kind="Schema"]}[Data],
+				    PETAL_MODEL_Table = PUBLIC_Schema{[Name="PETAL_MODEL",Kind="Table"]}[Data]
+				in
+				    PETAL_MODEL_Table
+
+	annotation PBI_ResultType = Table
+

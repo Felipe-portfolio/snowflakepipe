@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["AMZN"]
+annotation PBI_QueryOrder = ["AMZN","PETAL_MODEL"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -17,6 +17,7 @@ annotation PBI_ProTooling = ["DevMode"]
 ref table AMZN
 ref table DateTableTemplate_4530def3-93b9-4516-afd3-504ac5e445e1
 ref table LocalDateTable_c5edc3e2-7b24-41d0-99b7-88235d816608
+ref table PETAL_MODEL
 
 ref cultureInfo en-US
 

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "21b4d89233a09c0340c4",
+  "position": {
+    "x": 455.50513494148549,
+    "y": 17.119656078337712,
+    "z": 1000,
+    "height": 286.14282302364461,
+    "width": 369.29543826128491,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "violinPlot4D46EB9EB3A141D9BA2289793175D971",
+    "query": {
+      "queryState": {
+        "category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PETAL_MODEL"
+                    }
+                  },
+                  "Property": "SPECIES"
+                }
+              },
+              "queryRef": "PETAL_MODEL.SPECIES",
+              "nativeQueryRef": "SPECIES"
+            }
+          ]
+        },
+        "measure": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PETAL_MODEL"
+                    }
+                  },
+                  "Property": "Max Petal Length"
+                }
+              },
+              "queryRef": "PETAL_MODEL.Max Petal Length",
+              "nativeQueryRef": "Max Petal Length"
+            }
+          ]
+        },
+        "sampling": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PETAL_MODEL"
+                    }
+                  },
+                  "Property": "SPECIES"
+                }
+              },
+              "queryRef": "PETAL_MODEL.SPECIES",
+              "nativeQueryRef": "SPECIES"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "dataColours": [
+        {
+          "properties": {
+            "colourByCategory": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "categoryFillColour": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4ACE1F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "PETAL_MODEL"
+                          }
+                        },
+                        "Property": "SPECIES"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'virginica'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
