@@ -1,0 +1,94 @@
+table AMZN
+	lineageTag: 3fc2e26b-ac65-4f25-8c88-2fc6a87ffa14
+
+	column DATE_STOCK
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 04fb01d1-f056-49d5-81dc-706775fbfaab
+		summarizeBy: none
+		sourceColumn: DATE_STOCK
+
+		variation Variation
+			isDefault
+			relationship: f7cf1cc6-bb74-4391-87ab-fa56552a11c2
+			defaultHierarchy: LocalDateTable_c5edc3e2-7b24-41d0-99b7-88235d816608.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OPEN
+		dataType: double
+		lineageTag: d2c5660d-c361-4ee6-9d6d-f333b1d49e01
+		summarizeBy: sum
+		sourceColumn: OPEN
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HIGH
+		dataType: double
+		lineageTag: 67099d23-caea-46b6-8a84-7c059b6edb15
+		summarizeBy: sum
+		sourceColumn: HIGH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LOW
+		dataType: double
+		lineageTag: 98b5bb79-a85e-4bc5-9194-6eb570d90c6f
+		summarizeBy: sum
+		sourceColumn: LOW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CLOSE
+		dataType: double
+		lineageTag: c24b217e-3224-4923-99b7-a31a4efb3b72
+		summarizeBy: sum
+		sourceColumn: CLOSE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADJ_CLOSE
+		dataType: double
+		lineageTag: 1613973c-edd7-4744-b988-228dc4a5ede0
+		summarizeBy: sum
+		sourceColumn: ADJ_CLOSE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column STOCK_VOLUME
+		dataType: double
+		lineageTag: 4b726a5a-6926-49a3-a528-0c67755f7088
+		summarizeBy: sum
+		sourceColumn: STOCK_VOLUME
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition AMZN = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("IEHIPSW-KOA05469.snowflakecomputing.com","COMPUTE_WH"),
+				    MANAGE_DB_Database = Source{[Name="MANAGE_DB",Kind="Database"]}[Data],
+				    PUBLIC_Schema = MANAGE_DB_Database{[Name="PUBLIC",Kind="Schema"]}[Data],
+				    AMZN_Table = PUBLIC_Schema{[Name="AMZN",Kind="Table"]}[Data]
+				in
+				    AMZN_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

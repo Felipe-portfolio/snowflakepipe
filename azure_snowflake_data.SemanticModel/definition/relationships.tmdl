@@ -1,0 +1,5 @@
+relationship f7cf1cc6-bb74-4391-87ab-fa56552a11c2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: AMZN.DATE_STOCK
+	toColumn: LocalDateTable_c5edc3e2-7b24-41d0-99b7-88235d816608.Date
+
