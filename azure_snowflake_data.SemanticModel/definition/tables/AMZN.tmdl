@@ -3,7 +3,7 @@ table AMZN
 
 	column DATE_STOCK
 		dataType: dateTime
-		formatString: Long Date
+		formatString: dd/mm/yy
 		lineageTag: 04fb01d1-f056-49d5-81dc-706775fbfaab
 		summarizeBy: none
 		sourceColumn: DATE_STOCK
@@ -16,6 +16,8 @@ table AMZN
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	column OPEN
 		dataType: double
